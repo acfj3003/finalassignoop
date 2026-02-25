@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-brand">Weather Analytics</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="forecast.html">Forecast & Activities</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <header class="page-header">
+                <h1>Weather Analytics Dashboard</h1>
+                <p>Real-time weather data and analytics for Malaysia</p>
+            </header>
+
+            <section class="search-section">
+                <div class="search-container">
+                    <input type="text" id="locationInput" placeholder="Enter location (e.g., Kuala Lumpur, Malaysia)" value="Malaysia">
+                    <button id="searchBtn" class="btn-primary">Get Weather</button>
+                </div>
+                <div class="loading-spinner" id="loadingSpinner"></div>
+            </section>
+
+            <section class="weather-section" id="currentWeather">
+                <h2>Current Weather</h2>
+                <div class="weather-card" id="weatherDisplay">
+                    <div class="weather-loading">Search for a location to view weather data</div>
+                </div>
+            </section>
+
+            <section class="analytics-section" id="analyticsSection" style="display: none;">
+                <h2>Weather Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Temperature Analysis</h3>
+                        <div class="analytics-content" id="tempAnalysis">
+                            <div class="temp-current">
+                                <span class="label">Current:</span>
+                                <span class="value" id="currentTemp">--°C</span>
+                            </div>
+                            <div class="temp-avg">
+                                <span class="label">Average (3 days):</span>
+                                <span class="value" id="avgTemp">--°C</span>
+                            </div>
+                            <div class="temp-max">
+                                <span class="label">Max (3 days):</span>
+                                <span class="value" id="maxTemp">--°C</span>
+                            </div>
+                            <div class="temp-min">
+                                <span class="label">Min (3 days):</span>
+                                <span class="value" id="minTemp">--°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Rain Risk Analysis</h3>
+                        <div class="analytics-content" id="rainAnalysis">
+                            <div class="risk-indicator" id="rainRisk">--</div>
+                            <div class="risk-details" id="rainDetails"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="crud-section">
+                <h2>Activity Recommendations</h2>
+                
+                <div class="crud-form">
+                    <h3 id="formTitle">Add New Activity Recommendation</h3>
+                    <input type="hidden" id="activityId">
+                    <div class="form-group">
+                        <label for="activityName">Activity Name:</label>
+                        <input type="text" id="activityName" placeholder="e.g., Hiking">
+                    </div>
+                    <div class="form-group">
+                        <label for="activityType">Activity Type:</label>
+                        <select id="activityType">
+                            <option value="outdoor">Outdoor</option>
+                            <option value="indoor">Indoor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="weatherCondition">Weather Condition:</label>
+                        <select id="weatherCondition">
+                            <option value="sunny">Sunny</option>
+                            <option value="cloudy">Cloudy</option>
+                            <option value="rainy">Rainy</option>
+                            <option value="clear">Clear</option>
+                            <option value="any">Any Weather</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="minTempCondition">Min Temperature (°C):</label>
+                        <input type="number" id="minTempCondition" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxTempCondition">Max Temperature (°C):</label>
+                        <input type="number" id="maxTempCondition" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="activityDesc">Description:</label>
+                        <textarea id="activityDesc" rows="3" placeholder="Describe the activity..."></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button id="saveActivityBtn" class="btn-success">Save Activity</button>
+                        <button id="cancelEditBtn" class="btn-secondary" style="display: none;">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="activities-list">
+                    <h3>Saved Activities</h3>
+                    <table id="activitiesTable">
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Type</th>
+                                <th>Weather</th>
+                                <th>Temp Range (°C)</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activitiesBody">
+                            <tr><td colspan="6" class="text-center">No activities added yet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>

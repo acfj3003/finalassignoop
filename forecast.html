@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast & Activities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-brand">Weather Analytics</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="forecast.html" class="active">Forecast & Activities</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <header class="page-header">
+                <h1>3-Day Weather Forecast</h1>
+                <p>Plan your activities based on weather predictions</p>
+            </header>
+
+            <section class="search-section">
+                <div class="search-container">
+                    <input type="text" id="forecastLocation" placeholder="Enter location (e.g., Kuala Lumpur, Malaysia)" value="Malaysia">
+                    <button id="getForecastBtn" class="btn-primary">Get Forecast</button>
+                </div>
+                <div class="loading-spinner" id="loadingSpinner"></div>
+            </section>
+
+            <section class="forecast-section" id="forecastSection" style="display: none;">
+                <h2>3-Day Weather Forecast</h2>
+                <div class="forecast-grid" id="forecastCards">
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <h2>Weather Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Average Temperature</h3>
+                        <div class="stat-value" id="avgTempForecast">--°C</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Rain Probability</h3>
+                        <div class="stat-value" id="rainProbability">--%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Best Day for Outdoor</h3>
+                        <div class="stat-value" id="bestOutdoorDay">--</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="activity-suggestions">
+                <h2>Recommended Activities</h2>
+                <div class="suggestions-grid">
+                    <div class="suggestion-card">
+                        <h3>Based on Current Weather</h3>
+                        <div id="currentWeatherSuggestions">
+                            <p class="no-activities">Search for weather to see suggestions</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-card">
+                        <h3>Based on Forecast</h3>
+                        <div id="forecastSuggestions">
+                            <p class="no-activities">Search for weather to see suggestions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="renderer-forecast.js"></script>
+</body>
+</html>
